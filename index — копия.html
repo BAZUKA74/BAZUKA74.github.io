@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazuka Studio | Рандомайзер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="dropdown-btn" onclick="openFullscreenMenu()">Настройки</button>
+        </div>
+
+        <div class="fullscreen-menu" id="fullscreenMenu">
+            <button class="close-menu" onclick="closeFullscreenMenu()">×</button>
+            <button onclick="toggleTheme()">Сменить тему</button>
+        </div>
+
+        <div class="range-selector">
+            <div class="range-inputs">
+                <label for="minRange">От:</label>
+                <input type="number" id="minRange" value="1" min="0" max="1000">
+                <label for="maxRange">До:</label>
+                <input type="number" id="maxRange" value="100" min="1" max="1000">
+            </div>
+        </div>
+
+        <div class="result-container">
+            <div class="result" id="result">?</div>
+        </div>
+
+        <div class="toggle-container">
+            <input type="checkbox" id="noRepeatToggle" class="toggle-checkbox">
+            <label for="noRepeatToggle" class="toggle-label">Без повторений</label>
+        </div>
+
+        <button class="generate-btn" onclick="generateNumber()">Сгенерировать число</button>
+
+        <div class="footer">
+            <div class="studio-text" id="studioText">BAZUKA STUDIO</div>
+        </div>
+
+        <div class="notification" id="numbersExhaustedNotification">
+            <div>Числа кончились</div>
+            <button onclick="closeNotification()">OK</button>
+        </div>
+
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <h3>Доступ к панели администратора</h3>
+                <input type="text" id="login" placeholder="Логин">
+                <input type="password" id="password" placeholder="Пароль">
+                <div>
+                    <button onclick="checkAdminCredentials()">Войти</button>
+                    <button onclick="closeAdminModal()">Отмена</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="adminPanel" class="admin-panel">
+            <h3>Панель администратора</h3>
+            <button class="logout-btn" onclick="logoutAdmin()">Выйти</button>
+            
+            <div class="admin-section">
+                <h4>Гарантированное следующее число</h4>
+                <p>Введите число, которое выпадет следующим с вероятностью 100%</p>
+                <div class="admin-controls">
+                    <input type="number" id="nextNumber" placeholder="Число" min="0" max="1000">
+                    <button onclick="setNextNumber()">Установить следующее число</button>
+                </div>
+            </div>
+            
+            <div class="admin-section">
+                <h4>Настройка вероятности чисел</h4>
+                <p>Установите вероятность выпадения конкретных чисел (в %)</p>
+                <div class="admin-controls">
+                    <input type="number" id="targetNumber" placeholder="Число" min="0" max="1000">
+                    <input type="number" id="probability" placeholder="Вероятность %" min="0" max="100">
+                    <button onclick="setProbability()">Установить вероятность</button>
+                </div>
+                
+                <div class="probability-list" id="probabilityList">
+                    <!-- Список настроенных вероятностей будет здесь -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
